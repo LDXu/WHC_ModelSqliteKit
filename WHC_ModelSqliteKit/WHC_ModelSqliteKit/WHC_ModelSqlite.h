@@ -39,7 +39,12 @@
  自定义数据存储路径字典
  @return @{new_path:old_path}
  */
-+ (NSDictionary *)whc_SqlitePath;
++ (NSDictionary *)whc_SqlitePathAutoHandle;
+/**
+ 自定义数据存储路径
+ @return
+ */
++ (NSString *)whc_SqlitePath;
 
 
 /// 自定义模型类数据库版本号

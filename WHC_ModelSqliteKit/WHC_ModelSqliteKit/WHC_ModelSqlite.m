@@ -136,7 +136,11 @@ static sqlite3 * _whc_database;
 
 + (NSString *)databaseCacheDirectory:(Class)model_class {
     if (model_class) {
-        NSDictionary *custom_dic = [self exceDicSelector:@selector(whc_SqlitePath) modelClass:model_class];
+        NSString *custom_path = [self exceSelector:@selector(whc_SqlitePath) modelClass:model_class];
+        if (custom_path.length) {
+            return custom_path;
+        }
+        NSDictionary *custom_dic = [self exceDicSelector:@selector(whc_SqlitePathAutoHandle) modelClass:model_class];
         if (custom_dic.count) {
             NSString *floder_path = custom_dic.allKeys.firstObject;
             if (floder_path != nil && floder_path.length > 0) {
